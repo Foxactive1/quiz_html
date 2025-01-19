@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário HTML</title>
+    <style>
+body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+            color: #00ffcc;
+            text-align: center;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #00ffcc;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+        }
+        .question-container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(15, 32, 39, 0.9);
+            max-width: 600px;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+        .question {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .options button {
+            background: linear-gradient(45deg, #00ffcc, #00796b);
+            color: black;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
+        }
+        .options button:hover {
+            background: linear-gradient(45deg, #00796b, #00ffcc);
+            box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc inset;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 0 10px #00ffcc inset;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Questionário sobre HTML</h1>
+    </header>
+    <main>
+        <div class="container" id="name-container">
+            <h2>Insira seu nome para começar:</h2>
+            <input type="text" id="username" placeholder="Seu nome" style="padding: 10px; font-size: 1rem;">
+            <br>
+            <button onclick="startQuiz()">Iniciar</button>
+        </div>
+        <div class="container" id="quiz-container" style="display: none;">
+            <p class="question" id="question"></p>
+            <div class="options" id="options-container"></div>
+        </div>
+        <div class="container" id="result-container" style="display: none;">
+            <p id="result"></p>
+            <div id="ranking"></div>
+            <button onclick="restartQuiz()">Jogar Novamente</button>
+        </div>
+    </main>
+    <script>
+        
+        const questions = [
+    {
+        question: "Qual é o propósito da tag `<h1>` no HTML?",
+        options: [
+            "Definir um link",
+            "Adicionar uma imagem",
+            "Criar um cabeçalho de nível 1",
+            "Estilizar o texto"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual é a tag usada para criar links no HTML?",
+        options: [
+            "<link>",
+            "<a>",
+            "<href>",
+            "<url>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual tag é usada para adicionar uma imagem?",
+        options: [
+            "<img>",
+            "<src>",
+            "<image>",
+            "<picture>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual atributo define o destino de um link?",
+        options: [
+            "src",
+            "href",
+            "alt",
+            "target"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual é o significado da sigla HTML?",
+        options: [
+            "Hyper Text Multiple Language",
+            "Hyperlinks and Text Markup Language",
+            "Hyper Text Markup Language",
+            "Home Tool Markup Language"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual tag HTML é usada para criar uma lista não ordenada?",
+        options: [
+            "<ul>",
+            "<ol>",
+            "<li>",
+            "<list>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual tag é usada para criar uma linha horizontal na página?",
+        options: [
+            "<line>",
+            "<hr>",
+            "<horizontal>",
+            "<break>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual atributo é usado para definir uma cor de fundo no HTML?",
+        options: [
+            "color",
+            "background",
+            "bgcolor",
+            "style"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual é a estrutura básica de um documento HTML?",
+        options: [
+            "<header>, <main>, <footer>",
+            "<html>, <head>, <body>",
+            "<div>, <span>, <section>",
+            "<title>, <meta>, <script>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual tag é usada para adicionar um vídeo em uma página HTML?",
+        options: [
+            "<media>",
+            "<embed>",
+            "<video>",
+            "<movie>"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual tag é usada para criar uma tabela no HTML?",
+        options: [
+            "<table>",
+            "<tab>",
+            "<tr>",
+            "<td>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual tag HTML é usada para marcar a parte superior de um site?",
+        options: [
+            "<header>",
+            "<head>",
+            "<top>",
+            "<section>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual tag HTML é usada para agrupar conteúdos relacionados em um formulário?",
+        options: [
+            "<legend>",
+            "<fieldset>",
+            "<form>",
+            "<input>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual tag HTML é usada para criar uma lista ordenada?",
+        options: [
+            "<ul>",
+            "<ol>",
+            "<li>",
+            "<list>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual atributo da tag `<img>` é usado para exibir um texto alternativo caso a imagem não seja carregada?",
+        options: [
+            "src",
+            "title",
+            "alt",
+            "description"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual é a tag semântica usada para definir o conteúdo principal de uma página?",
+        options: [
+            "<main>",
+            "<section>",
+            "<article>",
+            "<div>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual tag HTML é usada para inserir um script JavaScript na página?",
+        options: [
+            "<script>",
+            "<js>",
+            "<javascript>",
+            "<code>"
+        ],
+        answer: 1
+    },
+    {
+        question: "Qual atributo HTML é usado para abrir um link em uma nova aba?",
+        options: [
+            "newtab",
+            "open",
+            "target",
+            "href"
+        ],
+        answer: 3
+    },
+    {
+        question: "Qual tag HTML é usada para definir uma área de conteúdo navegável?",
+        options: [
+            "<menu>",
+            "<nav>",
+            "<aside>",
+            "<section>"
+        ],
+        answer: 2
+    },
+    {
+        question: "Qual é a diferença entre as tags `<strong>` e `<b>` no HTML?",
+        options: [
+            "Ambas exibem o texto em negrito, mas `<strong>` indica maior importância semântica.",
+            "Ambas exibem o texto em negrito, mas `<b>` é usada apenas para ênfase.",
+            "<b> exibe texto em negrito, enquanto <strong> exibe texto em itálico.",
+            "Não há diferença, ambas são intercambiáveis."
+        ],
+        answer: 1
+    }
+];
+
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let username = "";
+
+        function startQuiz() {
+            username = document.getElementById("username").value.trim();
+            if (!username) {
+                alert("Por favor, insira seu nome!");
+                return;
+            }
+
+            document.getElementById("name-container").style.display = "none";
+            document.getElementById("quiz-container").style.display = "block";
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question");
+            const optionsContainer = document.getElementById("options-container");
+            
+            questionElement.innerText = questions[currentQuestion].question;
+            optionsContainer.innerHTML = "";
+
+            questions[currentQuestion].options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => checkAnswer(index + 1);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selected) {
+            if (selected === questions[currentQuestion].answer) {
+                score++;
+            }
+
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        function endQuiz() {
+            document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("result-container").style.display = "block";
+
+            // Salvar o resultado no localStorage
+            const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+            ranking.push({ name: username, score });
+            localStorage.setItem("ranking", JSON.stringify(ranking));
+
+            // Mostrar resultado e ranking
+            document.getElementById("result").innerText = `${username}, você acertou ${score} de ${questions.length} perguntas!`;
+            showRanking();
+        }
+
+        function showRanking() {
+            const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+            const sortedRanking = ranking.sort((a, b) => b.score - a.score);
+
+            const rankingDiv = document.getElementById("ranking");
+            rankingDiv.innerHTML = "<h3>Ranking:</h3>";
+            sortedRanking.forEach((player, index) => {
+                rankingDiv.innerHTML += `<p>${index + 1}. ${player.name} - ${player.score} ponto(s)</p>`;
+            });
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            username = "";
+
+            document.getElementById("result-container").style.display = "none";
+            document.getElementById("name-container").style.display = "block";
+            document.getElementById("username").value = "";
+        }
+    </script>
+</body>
+</html>
