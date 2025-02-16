@@ -1,0 +1,132 @@
+[
+    {
+        "question": "Qual é o propósito da tag `<h1>` no HTML?",
+        "options": [
+            "Definir um link",
+            "Adicionar uma imagem",
+            "Criar um cabeçalho de nível 1",
+            "Estilizar o texto"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Qual é a tag usada para criar links no HTML?",
+        "options": [
+            "<link>",
+            "<a>",
+            "<href>",
+            "<url>"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Qual tag é usada para adicionar uma imagem?",
+        "options": [
+            "<img>",
+            "<src>",
+            "<image>",
+            "<picture>"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "Qual atributo define o destino de um link?",
+        "options": [
+            "src",
+            "href",
+            "alt",
+            "target"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Qual é o significado da sigla HTML?",
+        "options": [
+            "Hyper Text Multiple Language",
+            "Hyperlinks and Text Markup Language",
+            "Hyper Text Markup Language",
+            "Home Tool Markup Language"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Qual propriedade do CSS é usada para alterar a cor do texto?",
+        "options": [
+            "text-color",
+            "font-color",
+            "color",
+            "text-style"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Qual é a unidade de medida relativa mais usada no CSS?",
+        "options": [
+            "px",
+            "em",
+            "cm",
+            "pt"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Qual propriedade do CSS é usada para definir a imagem de fundo?",
+        "options": [
+            "background",
+            "bg-image",
+            "background-image",
+            "image-url"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Qual dessas linguagens é usada para adicionar interatividade em páginas web?",
+        "options": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Python"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Como se declara uma variável em JavaScript?",
+        "options": [
+            "var nome = 'João';",
+            "variable nome = 'João';",
+            "let nome == 'João';",
+            "const nome : 'João';"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "Qual é o operador de comparação para verificar igualdade estrita em JavaScript?",
+        "options": [
+            "=",
+            "==",
+            "===",
+            "!="
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Qual função do JavaScript é usada para exibir um alerta na tela?",
+        "options": [
+            "console.log()",
+            "alert()",
+            "prompt()",
+            "confirm()"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Qual evento do JavaScript é acionado quando um usuário clica em um botão?",
+        "options": [
+            "onhover",
+            "onclick",
+            "onchange",
+            "onsubmit"
+        ],
+        "answer": 1
+    }
+]
