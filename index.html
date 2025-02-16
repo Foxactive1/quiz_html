@@ -49,6 +49,11 @@
         }
         .options button:hover {
             background: linear-gradient(45deg, #00796b, #00ffcc);
+            
+       .options button:focus {
+            outline: 2px solid #fff;
+    background: linear-gradient(45deg, #00796b, #00ffcc);
+}
         }
         #result {
             font-size: 1.5rem;
@@ -63,7 +68,10 @@
         <p class="question" id="question"></p>
         <div class="options" id="options-container"></div>
     </div>
-    <p id="result"></p>
+    
+    <p id="result" aria-live="polite"></p>
+    
+    <button id="restart" style="display:none; margin-top: 10px;">Reiniciar</button>
     <script src="script.js"></script>
 </body>
 </html>
