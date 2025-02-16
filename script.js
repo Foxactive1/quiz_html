@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             // Mostrar indicador de carregamento
             quizContainer.innerHTML = "<p>Carregando perguntas...</p>";
-            const response = await fetch("questions.json");
+            const response = await fetch("./questions.json");
             questions = await response.json();
             showQuestion();
         } catch (error) {
