@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const questionEl = document.getElementById("question");
     const optionsContainer = document.getElementById("options-container");
     const resultEl = document.getElementById("result");
+    const quizContainer = document.getElementById("quiz-container");
 
     let questions = [];
     let currentQuestionIndex = 0;
@@ -10,6 +11,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Carregar perguntas do JSON
     async function loadQuestions() {
         try {
+            // Mostrar indicador de carregamento
+            quizContainer.innerHTML = "<p>Carregando perguntas...</p>";
             const response = await fetch("questions.json");
             questions = await response.json();
             showQuestion();
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             resultEl.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
             questionEl.textContent = "Fim do questionário!";
             optionsContainer.innerHTML = "";
+            saveProgress();  // Salvar o progresso no localStorage
             return;
         }
 
@@ -49,6 +53,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         showQuestion();
     }
 
-    // Iniciar carregamento
+    // Salvar progresso no localStorage
+    function saveProgress() {
+        localStorage.setItem("quizScore", score);
+        localStorage.setItem("quizIndex", currentQuestionIndex);
+    }
+
+    // Carregar progresso do localStorage
+    function loadProgress() {
+        score = localStorage.getItem("quizScore") || 0;
+        currentQuestionIndex = localStorage.getItem("quizIndex") || 0;
+    }
+
+    // Iniciar carregamento das perguntas
+    loadProgress(); // Carregar progresso se houver
     loadQuestions();
 });
