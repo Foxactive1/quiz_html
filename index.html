@@ -4,74 +4,546 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Dione Castro Alves">
-    <meta name="description" content="Questionário educativo sobre HTML">
-    <meta name="keywords" content="HTML, Questionário, Educativo">
+    <meta name="description" content="Questionário educativo sobre HTML, CSS e JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Questionário, Desenvolvimento Web">
     <meta name="theme-color" content="#00ffcc">
-    <meta property="og:title" content="Questionário HTML">
-    <meta property="og:description" content="Teste seus conhecimentos sobre HTML com este questionário interativo.">
-    <meta property="og:image" content="caminho-da-imagem.jpg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>Questionário HTML</title>
+    <title>Questionário de Desenvolvimento Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f2027;
-            color: #00ffcc;
-            text-align: center;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
         }
-        .container {
-            background: rgba(15, 32, 39, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0 0 10px #00ffcc;
-        }
-        .question {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .options button {
-            display: block;
-            background: linear-gradient(45deg, #00ffcc, #00796b);
-            color: black;
-            border: none;
-            border-radius: 10px;
-            padding: 10px;
-            font-size: 1rem;
-            cursor: pointer;
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
             width: 100%;
-            margin: 5px 0;
-            transition: 0.3s;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
         }
-        .options button:hover {
-            background: linear-gradient(45deg, #00796b, #00ffcc);
-            
-       .options button:focus {
-            outline: 2px solid #fff;
-    background: linear-gradient(45deg, #00796b, #00ffcc);
-}
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        #result {
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00ffcc, #00ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b0e6e0;
+            margin-bottom: 25px;
+        }
+        
+        .quiz-container {
+            background: rgba(15, 32, 39, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                        0 0 20px rgba(0, 255, 204, 0.3);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .quiz-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            flex-grow: 1;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 10px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffcc, #00ccff);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            font-weight: 600;
+            color: #00ffcc;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        .question {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            color: #e0f7fa;
+            text-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .option-btn {
+            background: rgba(0, 50, 50, 0.3);
+            color: #b0e6e0;
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 15px;
+            padding: 18px 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-btn:hover {
+            background: rgba(0, 150, 150, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .option-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.5);
+        }
+        
+        .option-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .option-btn:hover::before {
+            left: 100%;
+        }
+        
+        .option-icon {
+            margin-right: 15px;
             font-size: 1.5rem;
+            min-width: 30px;
+            color: #00ffcc;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(15, 32, 39, 0.9);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                        0 0 20px rgba(0, 255, 204, 0.3);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        #result {
+            font-size: 2.2rem;
             font-weight: bold;
-            color: white;
+            margin-bottom: 20px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        
+        .score-display {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            background: linear-gradient(90deg, #00ffcc, #00ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+        
+        .message {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: #b0e6e0;
+        }
+        
+        #restart {
+            background: linear-gradient(135deg, #00ffcc, #00ccff);
+            color: #0f2027;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        #restart:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 255, 204, 0.5);
+        }
+        
+        #restart i {
+            margin-left: 10px;
+        }
+        
+        .feedback {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .correct {
+            background: rgba(0, 200, 83, 0.2);
+            color: #69f0ae;
+            border: 2px solid #69f0ae;
+        }
+        
+        .incorrect {
+            background: rgba(213, 0, 0, 0.2);
+            color: #ff8a80;
+            border: 2px solid #ff8a80;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            color: #b0e6e0;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        .footer a {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .hint {
+            color: #b0e6e0;
+            font-size: 1rem;
+            margin-top: 15px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid rgba(0, 255, 204, 0.2);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            font-size: 1.5rem;
+            color: #00ffcc;
+        }
+        
+        .loading i {
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+                min-height: 100px;
+            }
+            
+            .quiz-container, .result-container {
+                padding: 20px;
+            }
+            
+            .option-btn {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                font-size: 1.3rem;
+                min-height: 80px;
+            }
+            
+            .option-icon {
+                font-size: 1.2rem;
+                min-width: 25px;
+            }
+            
+            .score-display {
+                font-size: 4rem;
+            }
+            
+            #result {
+                font-size: 1.8rem;
+            }
+            
+            .progress-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .progress-bar {
+                width: 100%;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Questionário HTML</h1>
-    <div class="container" id="quiz-container">
-        <p class="question" id="question"></p>
-        <div class="options" id="options-container"></div>
+    <div class="header">
+        <h1><i class="fas fa-code"></i> Questionário de Desenvolvimento Web</h1>
+        <p class="subtitle">Teste seus conhecimentos sobre HTML, CSS e JavaScript</p>
     </div>
     
-    <p id="result" aria-live="polite"></p>
+    <div class="quiz-container" id="quiz-container">
+        <div class="progress-container">
+            <span class="progress-text" id="progress-text">Carregando...</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+        
+        <p class="question" id="question">Carregando perguntas...</p>
+        
+        <div class="options" id="options-container">
+            <div class="loading">
+                <i class="fas fa-spinner"></i> Carregando questões...
+            </div>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+    </div>
     
-    <button id="restart" style="display:none; margin-top: 10px;">Reiniciar</button>
-    <script src="script.js"></script>
+    <div class="result-container" id="result-container">
+        <div id="result"></div>
+        <div class="score-display" id="score-display">0%</div>
+        <p class="message" id="message"></p>
+        <button id="restart"><i class="fas fa-redo-alt"></i> Reiniciar Questionário</button>
+    </div>
+    
+    <p class="hint" id="hint">Dica: Todas as perguntas têm apenas uma resposta correta</p>
+    
+    <div class="footer">
+        <p>Desenvolvido por Dione Castro Alves | &copy; 2023 InNovaIdeia</p>
+        <p><a href="https://innovaideia-github-io.vercel.app" target="_blank">Visite meu portfólio</a></p>
+    </div>
+    
+    <script>
+// Elementos do DOM
+const quizContainer = document.getElementById('quiz-container');
+const questionEl = document.getElementById('question');
+const optionsContainer = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const resultContainer = document.getElementById('result-container');
+const resultEl = document.getElementById('result');
+const scoreDisplay = document.getElementById('score-display');
+const messageEl = document.getElementById('message');
+const restartBtn = document.getElementById('restart');
+const progressFill = document.getElementById('progress-fill');
+const progressText = document.getElementById('progress-text');
+
+// Estado do quiz
+let questions = [];
+let currentQuestion = 0;
+let score = 0;
+
+// Carregar questões do JSON
+function loadQuestions() {
+    fetch('./questions.json')
+        .then(res => res.json())
+        .then(data => {
+            questions = data;
+            initQuiz();
+        })
+        .catch(error => {
+            console.error('Erro ao carregar questões:', error);
+            questionEl.textContent = "Erro ao carregar questões.";
+        });
+}
+
+// Inicializar quiz
+function initQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    resultContainer.style.display = 'none';
+    quizContainer.style.display = 'block';
+    feedbackEl.style.display = 'none';
+    loadQuestion();
+}
+
+// Carregar uma pergunta
+function loadQuestion() {
+    const q = questions[currentQuestion];
+
+    // Atualizar texto e barra de progresso
+    questionEl.textContent = q.question;
+    progressText.textContent = `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+    progressFill.style.width = `${(currentQuestion / questions.length) * 100}%`;
+
+    // Renderizar opções
+    optionsContainer.innerHTML = '';
+    q.options.forEach((option, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<span class="option-icon">${String.fromCharCode(65 + i)}</span> ${option}`;
+        btn.addEventListener('click', () => checkAnswer(i));
+        optionsContainer.appendChild(btn);
+    });
+
+    feedbackEl.style.display = 'none';
+}
+
+// Verificar resposta
+function checkAnswer(selected) {
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll('.option-btn');
+
+    // Bloquear clique
+    buttons.forEach(btn => btn.disabled = true);
+
+    // Mostrar feedback
+    if (selected === q.answer) {
+        feedbackEl.textContent = "Correto! 🎉";
+        feedbackEl.className = "feedback correct";
+        score++;
+    } else {
+        feedbackEl.textContent = `Incorreto! A resposta correta é: ${q.options[q.answer]}`;
+        feedbackEl.className = "feedback incorrect";
+    }
+
+    feedbackEl.style.display = 'block';
+
+    // Estilizar a resposta correta
+    buttons[q.answer].style.backgroundColor = "rgba(0, 200, 83, 0.3)";
+    buttons[q.answer].style.borderColor = "#69f0ae";
+
+    // Avançar para próxima pergunta
+    setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }, 2000);
+}
+
+// Mostrar resultados finais
+function showResults() {
+    quizContainer.style.display = 'none';
+    resultContainer.style.display = 'block';
+
+    const percent = Math.round((score / questions.length) * 100);
+    resultEl.textContent = getResultTitle(percent);
+    messageEl.textContent = getResultMessage(percent);
+
+    let count = 0;
+    const interval = setInterval(() => {
+        if (count <= percent) {
+            scoreDisplay.textContent = `${count}%`;
+            count++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 20);
+}
+
+// Mensagens personalizadas
+function getResultTitle(percent) {
+    if (percent >= 80) return "Excelente! 🏆";
+    if (percent >= 60) return "Bom trabalho! 👍";
+    if (percent >= 40) return "Continue praticando! 💪";
+    return "Vamos estudar mais! 📚";
+}
+
+function getResultMessage(percent) {
+    if (percent >= 80) return "Você demonstrou um conhecimento avançado de desenvolvimento web!";
+    if (percent >= 60) return "Você tem um bom entendimento de desenvolvimento web!";
+    if (percent >= 40) return "Você conhece o básico, mas pode melhorar!";
+    return "Recomendamos revisar os conceitos básicos de desenvolvimento web.";
+}
+
+// Reiniciar
+restartBtn.addEventListener('click', initQuiz);
+
+// Início
+window.addEventListener('DOMContentLoaded', loadQuestions);
+    </script>
 </body>
 </html>
