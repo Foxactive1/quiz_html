@@ -1,3 +1,4 @@
+//
 document.addEventListener("DOMContentLoaded", function () { const quizContainer = document.getElementById("quiz-container"); const questionElement = document.getElementById("question"); const optionsContainer = document.getElementById("options-container"); const resultElement = document.getElementById("result"); const restartButton = document.getElementById("restart");
 
 let questions = [];
