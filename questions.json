@@ -1,132 +1,102 @@
 [
-    {
-        "question": "Qual é o propósito da tag `<h1>` no HTML?",
-        "options": [
-            "Definir um link",
-            "Adicionar uma imagem",
-            "Criar um cabeçalho de nível 1",
-            "Estilizar o texto"
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Qual é a tag usada para criar links no HTML?",
-        "options": [
-            "<link>",
-            "<a>",
-            "<href>",
-            "<url>"
-        ],
-        "answer": 1
-    },
-    {
-        "question": "Qual tag é usada para adicionar uma imagem?",
-        "options": [
-            "<img>",
-            "<src>",
-            "<image>",
-            "<picture>"
-        ],
-        "answer": 0
-    },
-    {
-        "question": "Qual atributo define o destino de um link?",
-        "options": [
-            "src",
-            "href",
-            "alt",
-            "target"
-        ],
-        "answer": 1
-    },
-    {
-        "question": "Qual é o significado da sigla HTML?",
-        "options": [
-            "Hyper Text Multiple Language",
-            "Hyperlinks and Text Markup Language",
-            "Hyper Text Markup Language",
-            "Home Tool Markup Language"
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Qual propriedade do CSS é usada para alterar a cor do texto?",
-        "options": [
-            "text-color",
-            "font-color",
-            "color",
-            "text-style"
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Qual é a unidade de medida relativa mais usada no CSS?",
-        "options": [
-            "px",
-            "em",
-            "cm",
-            "pt"
-        ],
-        "answer": 1
-    },
-    {
-        "question": "Qual propriedade do CSS é usada para definir a imagem de fundo?",
-        "options": [
-            "background",
-            "bg-image",
-            "background-image",
-            "image-url"
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Qual dessas linguagens é usada para adicionar interatividade em páginas web?",
-        "options": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Python"
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Como se declara uma variável em JavaScript?",
-        "options": [
-            "var nome = 'João';",
-            "variable nome = 'João';",
-            "let nome == 'João';",
-            "const nome : 'João';"
-        ],
-        "answer": 0
-    },
-    {
-        "question": "Qual é o operador de comparação para verificar igualdade estrita em JavaScript?",
-        "options": [
-            "=",
-            "==",
-            "===",
-            "!="
-        ],
-        "answer": 2
-    },
-    {
-        "question": "Qual função do JavaScript é usada para exibir um alerta na tela?",
-        "options": [
-            "console.log()",
-            "alert()",
-            "prompt()",
-            "confirm()"
-        ],
-        "answer": 1
-    },
-    {
-        "question": "Qual evento do JavaScript é acionado quando um usuário clica em um botão?",
-        "options": [
-            "onhover",
-            "onclick",
-            "onchange",
-            "onsubmit"
-        ],
-        "answer": 1
-    }
+  {
+    "question": "Qual elemento HTML é usado para criar um link?",
+    "options": ["<link>", "<a>", "<href>", "<url>"],
+    "answer": 1
+  },
+  {
+    "question": "Qual propriedade CSS é usada para alterar a cor do texto?",
+    "options": ["text-color", "font-color", "color", "text-style"],
+    "answer": 2
+  },
+  {
+    "question": "Como se declara uma variável em JavaScript?",
+    "options": ["variable x;", "v x;", "var x;", "declare x;"],
+    "answer": 2
+  },
+  {
+    "question": "Qual tag HTML é usada para incluir um arquivo JavaScript?",
+    "options": ["<javascript>", "<js>", "<script>", "<code>"],
+    "answer": 2
+  },
+  {
+    "question": "Qual seletor CSS tem maior especificidade?",
+    "options": ["Classe", "ID", "Elemento", "Atributo"],
+    "answer": 1
+  },
+  {
+    "question": "Qual método JavaScript é usado para selecionar um elemento por ID?",
+    "options": ["document.querySelector()", "document.getElementById()", "document.getElement()", "document.findElement()"],
+    "answer": 1
+  },
+  {
+    "question": "Qual propriedade CSS é usada para criar espaçamento interno?",
+    "options": ["margin", "spacing", "padding", "inner-space"],
+    "answer": 2
+  },
+  {
+    "question": "Qual tag HTML é usada para criar uma lista ordenada?",
+    "options": ["<ul>", "<li>", "<ol>", "<list>"],
+    "answer": 2
+  },
+  {
+    "question": "Como se declara uma função em JavaScript?",
+    "options": ["function = myFunction()", "function myFunction()", "def myFunction()", "func myFunction()"],
+    "answer": 1
+  },
+  {
+    "question": "Qual propriedade CSS é usada para alterar o tipo de exibição de um elemento?",
+    "options": ["display", "visibility", "show", "type"],
+    "answer": 0
+  },
+  {
+    "question": "Qual atributo HTML é usado para fornecer texto alternativo para imagens?",
+    "options": ["title", "src", "alt", "description"],
+    "answer": 2
+  },
+  {
+    "question": "Qual método JavaScript é usado para adicionar um elemento ao final de um array?",
+    "options": ["array.push()", "array.add()", "array.append()", "array.insert()"],
+    "answer": 0
+  },
+  {
+    "question": "Qual unidade CSS é relativa ao tamanho da fonte do elemento?",
+    "options": ["px", "em", "pt", "cm"],
+    "answer": 1
+  },
+  {
+    "question": "Qual tag HTML é usada para criar uma tabela?",
+    "options": ["<table>", "<tab>", "<grid>", "<data>"],
+    "answer": 0
+  },
+  {
+    "question": "Qual operador JavaScript é usado para comparar valor e tipo?",
+    "options": ["==", "===", "=", "!=="],
+    "answer": 1
+  },
+  {
+    "question": "Qual pseudo-classe CSS é usada para estilizar um elemento quando o mouse passa sobre ele?",
+    "options": [":active", ":focus", ":hover", ":over"],
+    "answer": 2
+  },
+  {
+    "question": "Qual propriedade CSS é usada para criar sombras em elementos?",
+    "options": ["shadow", "box-shadow", "element-shadow", "drop-shadow"],
+    "answer": 1
+  },
+  {
+    "question": "Como se comenta uma linha em JavaScript?",
+    "options": ["<!-- comentário -->", "// comentário", "/* comentário */", "# comentário"],
+    "answer": 1
+  },
+  {
+    "question": "Qual elemento HTML é usado para agrupar conteúdo relacionado?",
+    "options": ["<div>", "<section>", "<group>", "<content>"],
+    "answer": 1
+  },
+  {
+    "question": "Qual método JavaScript é usado para converter uma string em um número inteiro?",
+    "options": ["parseInt()", "toInteger()", "parseNumber()", "int()"],
+    "answer": 0
+  }
 ]
